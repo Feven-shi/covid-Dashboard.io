@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>COVID-19</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://img.freepik.com/premium-vector/virus-icon-cartoon-design-vector-bacteria-symbol-simple-cell-sign-coronavirus-covid-19-art_547648-335.jpg?w=2000" 
+                    width="80px" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse container navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link active" id="dash" aria-current="page" href="#">COVID-19 Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Countries
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> Bahamas </a></li>
+                            <li><a class="dropdown-item" href="#"> Morocco </a></li>
+                            <li><a class="dropdown-item" href="#"> Norway </a></li>
+                            <li><a class="dropdown-item" href="#"> Palau </a></li>
+                            <li><a class="dropdown-item" href="#"> Zimbabwe </a></li>
+                            <li><a class="dropdown-item" href="#"> Grenada </a></li>
+                            <li><a class="dropdown-item" href="#"> Tokelau </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Relief Initiatives
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid bg-light">
+
+        <div class="graph_links d-flex ">
+            <a href="#" class="nav-link" id="page_link1" style="font-weight: 100;"> Insights by Country </a> &nbsp;&nbsp;
+            <a href="#" class="nav-link" id="page_link2" style="font-weight: 100;"> Trend Analysis </a>
+        </div>
+
+        <div class="" style="background-color: white; padding: 25px; text-align: center;">
+            <img src="https://www.un.org/sites/un2.un.org/files/2020/04/covid19_response_icon.svg" width="100px" alt="">
+            <span>COVID-19 Analysis</span>
+        </div>
+        <div class="" > Country:
+            <select class="form-select form-select-sm" id="thelist" style="width: fit-content;" onChange="update()">
+                 <option></option>
+            </select> 
+        </div>
+
+
+
+        <div class="pt-3 row">
+            <div class="col-lg-2 col-sm-6" style="width: 11rem; ">
+                <div class="card" style="background-color: #f7d4cd; text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center" style="font-size: 15px;">Confirmed Cases</h6>
+                        <div>
+                        <span style="color: #b54029; font-size: 20px;" id="confirmed_num">
+                             0
+                            </span> 
+                        </div>
+                        
+                        <span class="card-text" style="color: #b54029; font-weight: 700; ">
+                            <small class="text-muted" >casesPerOneMillion</small></span> <br>
+                        <span style="color: #b54029; font-weight: 600; " id="confi_per"> 
+                            This is some 
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: #BED9ED ; text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Active Cases</h6>
+                        <div> 
+                            <span style="color: #458dc4; font-size: 20px;" id="active_case">
+                                 0 </span> </div>
+                                 <span class="card-text" style="color: #458dc4; font-weight: 700; ">
+                                    <small class="text-muted">activePerOneMillion</small></span> <br>
+                        <span style="color: #458dc4; font-weight: 600;"  id="active_per">
+                             This is some </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: #DEDEDE ; text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Total Deaths</h6>
+                        <div> 
+                            <span style="color: rgb(125, 125, 125); font-size: 20px;" id="death">
+                                 0 </span> </div>
+                                 <span class="card-text" style="color: rgb(125,125,125); font-weight: 700; ">
+                                    <small class="text-muted" >deathsPerOneMillion</small></span> <br>
+                        <span style="color: rgb(125, 125, 125); font-weight: 600; " id="death_per"> This is some</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: #F2E4C4; text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Critical Cases</h6>
+                        <div>
+                             <span  style="color: rgb(235, 167, 30); font-size: 20px;" id="critical">
+                                 0 </span> </div>
+                                 <span class="card-text" style="color: rgb(235, 167, 30); font-weight: 700; ">
+                                    <small class="text-muted" >criticalPerOneMillion</small></span> <br>
+                        <span style="color: rgb(235, 167, 30); font-weight: 600; " id="critical_per"> This is some</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: rgb(202, 236, 227); text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Total Recoverd</h6>
+                        <div> 
+                            <span style="color: #408f69; font-size: 20px;" id="total_rec"> 
+                               0 </span> </div>
+                               <span class="card-text" style="color: #408f69; font-weight: 600; ">
+                                <small class="text-muted" >recoveredPerOneMillion</small></span> <br>
+                        <span style="color: #408f69; font-weight: 600; " id="rec_per"> This is some </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: #DEDEDE; text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Tests</h6>
+                        <div>
+                             <span style="color: rgb(125, 125, 125); font-size: 19px;" id="tests">
+                                0</span> </div>
+                            <span class="card-text" style="color: rgb(125, 125, 125); font-weight: 700; ">
+                                <small class="text-muted">testsPerOneMillion</small></span> <br>
+                                <span style="color: rgb(125, 125, 125); font-weight: 600; "  id="test_per"> This is some  </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-6" style="width: 11rem">
+                <div class="card" style="background-color: rgb(202, 236, 227); text-align: center;">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">Population</h6>
+                        <div>
+                            <span  style="color: #408f69; font-size: 19px;" id="population"> 
+                                0 </span> </div>
+                                <span class="card-text" style="color: #408f69; font-weight: 500; ">
+                                    <small class="text-muted">Not updated to current</small></span> <br>
+                        <span style="color: #408f69; font-weight: 600; font-size: 11px;" id="continent"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+
+        <div class="first_graphs pt-3 row">
+            <div class="col-lg-6">
+                <figure class="highcharts-figure2">
+                    <div id="map3"></div>
+                    <p class="highcharts-description">
+                        This chart shows one confirmed case per people of each country grouped in thier Continent.
+                    </p>
+                </figure>
+               
+            </div>
+            <div class="col-lg-6">
+                <figure class="highcharts-figure1">
+                    <div id="map2"></div>
+                    <p class="highcharts-description"> </p>
+                </figure>
+            </div>
+        </div> 
+<br>
+
+        <div class="container-fluid bg-light">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                    <p>Overview of COVID-19</p>
+                    <thead style="background-color: rgb(213, 213, 213);">
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Confirmed Cases</th>
+                        <th scope="col">Active Cases</th>
+                        <th scope="col">Deaths</th>
+                        <th scope="col">Critical Cases</th>
+                        <th scope="col">Recoverd</th>
+                        <th scope="col">Tests</th>
+                        <th scope="col">Population</th>
+                        <th scope="col">Continent</th>
+                      </tr>
+                    </thead>
+                    <tbody id="row1">
+                    </tbody>
+            </table>
+          </div>  
+        </div>
+
+<br>
+
+          <div class="second-graphs">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="map1"></div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="container">
+                        <div id="continents">
+                            <button type="button" class="btn" style="background-color: rgb(190, 45, 34);" 
+                            value="critical" onclick="alldata(this.value)">
+                            critical</button>
+                            <button type="button" class="btn" style="background-color: rgb(73, 107, 217);"
+                            value="active" onclick="alldata(this.value)">
+                            active</button>
+                            <button type="button" class="btn" style="background-color: rgb(228, 151, 79);"
+                            value="tests" onclick="alldata(this.value)">
+                            tests</button>
+                            <button type="button" class="btn" style="background-color: rgb(93, 222, 118);"
+                            value="deaths" onclick="alldata(this.value)">
+                            deaths</button>
+                        </div>
+                        <figure class="highcharts-figure3">
+                            <div id="map4">
+                                PLEASE SELECT WHAT CASE YOU WANT TO VIEW !
+                            </div>
+                        </figure>    
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+        <hr>
+        <div class="container-fluid bg-light">
+        <div class="last-text">
+            <div class="" >
+              <p style="font-weight: bold; margin-left: 77%;"> Powered by 
+               
+                <span id="mybrand"> 
+                <img src="network.png" alt="" width="50px" >ኩለሄ </span> Analysts
+              </p> 
+           </div>
+            <hr>
+            <section class="container-fluid">
+            <div class="links" >
+                <a href="">Kulehe Home |</a>
+                <a href="">Contact Us |</a>
+                <a href="">Security |</a>
+                <a href="">Compilance |</a>
+                <a href="">IPR Complaints |</a>
+                <a href="">Anti-spam Policy |</a>
+                <a href="">Terms of Service |</a>
+                <a href="">Privacy Policy |</a>
+                <a href="">Cookie Policy |</a>
+                <a href="">GDPR Compliance |</a>
+                <a href="">Abuse Policy</a>
+            </div> 
+            <div class="footer text-center">
+                © 2023, Kulehe Corporation Pvt. Ltd. All Rights Reserved.
+            </div>
+         </section>
+        </div>
+        </div>
+    
+   
+   
+    
+
+   
+
+
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/arc-diagram.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>   
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+        integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
+        crossorigin="anonymous"></script>
+
+        <script
+        src="https://cdn.jsdelivr.net/npm/countup@1.8.2/countUp.js"
+      ></script>
+        <script src="third.js"></script>
+</body>
+
+</html>
